@@ -23,8 +23,8 @@ builder.Services.AddSwaggerGen();
 
 
 
-    builder.Services.AddSingleton
-        (new ArrivalsRepository());
+builder.Services.AddSingleton(new ArrivalsRepository());
+builder.Services.AddSingleton(new StudentsRepository());
 
 
 var app = builder.Build();
