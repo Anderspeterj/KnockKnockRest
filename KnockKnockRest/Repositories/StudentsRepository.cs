@@ -55,6 +55,7 @@ namespace KnockKnockRest.Repositories
             }
             foundStudent.Name = updates.Name;
             foundStudent.Address = updates.Address;
+            foundStudent.QrCode = updates.QrCode;
             return foundStudent;
         }
     }

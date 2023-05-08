@@ -1,7 +1,9 @@
-
+using Microsoft.EntityFrameworkCore;
 using KnockKnockRest.Repositories;
 using KnockKnockRest;
-using KnockKnockRest.Repositories;
+using KnockKnockRest.Context;
+using KnockKnockRest.RepositoriesDB;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddCors(options =>
@@ -23,8 +25,22 @@ builder.Services.AddSwaggerGen();
 
 
 
-builder.Services.AddSingleton(new ArrivalsRepository());
-builder.Services.AddSingleton(new StudentsRepository());
+
+
+bool useSql = false;
+if (useSql)
+{
+    var optionsBuilder = new DbContextOptionsBuilder<KnockKnockContext>();
+    optionsBuilder.UseSqlServer(Secrets.ConnectionString);
+    KnockKnockContext context = new KnockKnockContext(optionsBuilder.Options);
+    builder.Services.AddSingleton(new ArrivalsRepositoryDb(context));
+    builder.Services.AddSingleton(new StudentsRepositoryDb(context));
+}
+else
+{
+    builder.Services.AddSingleton(new ArrivalsRepository());
+    builder.Services.AddSingleton(new StudentsRepository());
+}
 
 
 var app = builder.Build();
