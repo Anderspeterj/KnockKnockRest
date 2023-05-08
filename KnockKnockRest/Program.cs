@@ -27,13 +27,13 @@ builder.Services.AddSwaggerGen();
 
 
 
-bool useSql = false;
+bool useSql = true;
 if (useSql)
 {
     var optionsBuilder = new DbContextOptionsBuilder<KnockKnockContext>();
     optionsBuilder.UseSqlServer(Secrets.ConnectionString);
     KnockKnockContext context = new KnockKnockContext(optionsBuilder.Options);
-    builder.Services.AddSingleton(new ArrivalsRepositoryDb(context));
+    //builder.Services.AddSingleton(new ArrivalsRepositoryDb(context));
     builder.Services.AddSingleton(new StudentsRepositoryDb(context));
 }
 else

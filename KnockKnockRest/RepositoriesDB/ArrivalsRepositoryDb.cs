@@ -2,5 +2,7 @@
 {
     public class ArrivalsRepositoryDb
     {
+        public ArrivalsRepositoryDb() { }
+        
     }
 }

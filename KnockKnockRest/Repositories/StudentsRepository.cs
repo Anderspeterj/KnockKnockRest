@@ -1,10 +1,11 @@
 ﻿using KnockKnockRest.Models;
 using System.Collections.Generic;
+using KnockKnockRest.Interfaces;
 
 namespace KnockKnockRest.Repositories
 
 {
-    public class StudentsRepository
+    public class StudentsRepository : IStudentsRepository
     {
         private int _nextID;
         private List<Student> _Students;
