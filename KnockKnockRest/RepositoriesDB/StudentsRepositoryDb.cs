@@ -32,9 +32,10 @@ namespace KnockKnockRest.RepositoriesDB
             return _context.students.ToList();
         }
 
-        public Student? GetByID(int id)
+        public Student? GetByID(int qr)
         {
-            throw new NotImplementedException();
+            List<Student> result = _context.students.ToList();
+            return result.Find(student => student.QrCode == qr);
         }
 
         public Student? Update(int id, Student updates)

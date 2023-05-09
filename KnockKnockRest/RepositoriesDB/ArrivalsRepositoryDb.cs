@@ -30,9 +30,10 @@ namespace KnockKnockRest.RepositoriesDB
             return _context.arrivals.ToList();
         }
 
-        public Arrival? GetByID(int id)
+        public Arrival? GetByID(int qr)
         {
-            throw new NotImplementedException();
+            List<Arrival> result = _context.arrivals.ToList();
+            return result.Find(arrival => arrival.QrCode == qr);
         }
 
         public Arrival? Update(int id, Arrival updates)

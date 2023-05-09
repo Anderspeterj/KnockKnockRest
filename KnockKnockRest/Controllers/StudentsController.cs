@@ -41,15 +41,12 @@ namespace KnockKnockRest.Controllers
         // GET api/<StudentsController>/5
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [HttpGet("{id}")]
-        public ActionResult<Student> Get(int id)
+        [HttpGet("{qr}")]
+        public ActionResult<Student> Get(int qr)
         {
-            Student? foundStudent = _repository.GetByID(id);
-            if (foundStudent == null)
-            {
-                return NotFound();
-            }
-            return Ok(foundStudent);
+            if (_repository.GetByID(qr) == null)
+                return NotFound("No student with that qr exists");
+            return _repository.GetByID(qr);
         }
 
         // POST api/<StudentsController>

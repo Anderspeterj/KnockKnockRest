@@ -41,14 +41,11 @@ namespace KnockKnockRest.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpGet("{id}")]
-        public ActionResult<Arrival> Get(int id)
+        public ActionResult<Arrival> Get(int qr)
         {
-            Arrival? foundArrival = _repository.GetByID(id);
-            if (foundArrival == null)
-            {
-                return NotFound();
-            }
-            return Ok(foundArrival);
+            if (_repository.GetByID(qr) == null)
+                return NotFound("No arrival with that qr exists");
+            return _repository.GetByID(qr);
         }
 
         // POST api/<ArrivalsController>
