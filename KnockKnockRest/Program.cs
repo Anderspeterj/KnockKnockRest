@@ -40,8 +40,8 @@ if (useSql)
 }
 else
 {
-    builder.Services.AddSingleton(new ArrivalsRepository());
-    builder.Services.AddSingleton(new StudentsRepository());
+    builder.Services.AddSingleton<IStudentsRepository>(new StudentsRepository());
+    builder.Services.AddSingleton<IArrivalsRepository>(new ArrivalsRepository())
 }
 
 
