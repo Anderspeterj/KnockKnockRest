@@ -41,7 +41,7 @@ if (useSql)
 else
 {
     builder.Services.AddSingleton<IStudentsRepository>(new StudentsRepository());
-    builder.Services.AddSingleton<IArrivalsRepository>(new ArrivalsRepository())
+    builder.Services.AddSingleton<IArrivalsRepository>(new ArrivalsRepository());
 }
 
 
