@@ -3,6 +3,6 @@
     public class Arrival
     {
         public int Id { get; set; }
-        public string? ArrivalTime { get; set; }
+        public DateTime? ArrivalTime { get; set; }
     }
 }

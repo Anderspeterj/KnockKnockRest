@@ -1,18 +1,21 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using KnockKnockRest.Models;
 using KnockKnockRest.Repositories;
+using KnockKnockRest.Interfaces;
+using Microsoft.AspNetCore.Cors;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace KnockKnockRest.Controllers
 {
+    [EnableCors("AllowAll")]
     [Route("api/[controller]")]
     [ApiController]
     public class ArrivalsController : ControllerBase
     {
-        private ArrivalsRepository _repository;
+        private IArrivalsRepository _repository;
 
-        public ArrivalsController(ArrivalsRepository repository)
+        public ArrivalsController(IArrivalsRepository repository)
         {
             _repository = repository;
         }

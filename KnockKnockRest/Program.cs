@@ -36,6 +36,7 @@ if (useSql)
     KnockKnockContext context = new KnockKnockContext(optionsBuilder.Options);
     //builder.Services.AddSingleton(new ArrivalsRepositoryDb(context));
     builder.Services.AddSingleton<IStudentsRepository>(new StudentsRepositoryDb(context));
+    builder.Services.AddSingleton<IArrivalsRepository>(new ArrivalsRepositoryDb(context));
 }
 else
 {

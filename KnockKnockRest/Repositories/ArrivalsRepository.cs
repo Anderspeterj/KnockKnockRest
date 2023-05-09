@@ -1,4 +1,5 @@
-﻿using KnockKnockRest.Models;
+﻿using KnockKnockRest.Interfaces;
+using KnockKnockRest.Models;
 using System.Xml.Linq;
 
 namespace KnockKnockRest.Repositories
