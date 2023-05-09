@@ -29,11 +29,11 @@
             }
         }
 
-        public void ValidateQrCode(int qr)
+        public void ValidateQrCode()
         {
-            if (IsEightDigits(qr))
+            if (QrCode > 99999999 || QrCode < 10000000)
             {
-                throw new ArgumentOutOfRangeException("QrCode must have exactly 8 digits");
+                throw new ArgumentException("QrCode must have exactly 8 digits");
             }
         }
 

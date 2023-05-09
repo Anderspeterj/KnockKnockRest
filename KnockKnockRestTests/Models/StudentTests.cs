@@ -21,7 +21,7 @@ namespace KnockKnockRest.Models.Tests
             QrCode = 58472328,
             Address = "1234 Main St"
         };
-        Student studentFail = new Student() { Id = 0, Name = "Anders", Address = "ringsted", QrCode = 32302657 };
+        Student studentFail = new Student() { Id = 0, Name = "Anders", Address = "ringsted", QrCode = 87654321 };
 
 
 
@@ -42,7 +42,10 @@ namespace KnockKnockRest.Models.Tests
         public void ValidateQrCodeTest()
         {
             studentClean.ValidateQrCode();
-            
+            studentFail.QrCode = 987654321;
+            Assert.ThrowsException<ArgumentException>(() => studentFail.ValidateQrCode());
+
+
         }
 
         [TestMethod()]
