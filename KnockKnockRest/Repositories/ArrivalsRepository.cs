@@ -3,7 +3,7 @@ using System.Xml.Linq;
 
 namespace KnockKnockRest.Repositories
 {
-    public class ArrivalsRepository
+    public class ArrivalsRepository : IArrivalsRepository
     {
         private int _nextID;
         private List<Arrival> _arrivals;
@@ -13,7 +13,7 @@ namespace KnockKnockRest.Repositories
             _nextID = 1;
             _arrivals = new List<Arrival>()
             {
-    
+
             };
         }
 
@@ -46,7 +46,7 @@ namespace KnockKnockRest.Repositories
         }
 
         public Arrival? Update(int id, Arrival updates)
-        { 
+        {
             Arrival? foundArrival = GetByID(id);
             if (foundArrival == null)
             {
