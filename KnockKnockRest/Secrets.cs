@@ -2,6 +2,6 @@
 {
     public class Secrets
     {
-        public static readonly string ConnectionString = "Dette skal ikke være her";
+        public static readonly string ConnectionString = "Dette skal ikke være her stadig ikke";
     }
 }
