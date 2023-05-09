@@ -7,7 +7,7 @@ namespace KnockKnockRest.RepositoriesDB
     public class ArrivalsRepositoryDb : IArrivalsRepository
     {
 
-        private KnockKnockContext _contextdd;
+        private KnockKnockContext _context;
         public ArrivalsRepositoryDb(KnockKnockContext context)
         {
             _context = context;
