@@ -12,7 +12,7 @@ namespace KnockKnockRest.Repositories
 
         public StudentsRepository()
         {
-            _nextID= 1;
+            _nextID = 1;
             _Students = new List<Student>();
             {
 

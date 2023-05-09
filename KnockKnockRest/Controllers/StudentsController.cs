@@ -1,19 +1,23 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using KnockKnockRest.Models;
 using KnockKnockRest.Repositories;
+using KnockKnockRest.Interfaces;
+using Microsoft.AspNetCore.Cors;
 
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace KnockKnockRest.Controllers
 {
+    [EnableCors("AllowAll")]
     [Route("api/[controller]")]
     [ApiController]
     public class StudentsController : ControllerBase
     {
-        private StudentsRepository _repository = new StudentsRepository();
 
-        public StudentsController(StudentsRepository repository)
+        private IStudentsRepository _repository;
+
+        public StudentsController(IStudentsRepository repository)
         {
             _repository = repository;   
         }

@@ -3,6 +3,7 @@ using KnockKnockRest.Repositories;
 using KnockKnockRest;
 using KnockKnockRest.Context;
 using KnockKnockRest.RepositoriesDB;
+using KnockKnockRest.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,7 +35,7 @@ if (useSql)
     optionsBuilder.UseSqlServer(Secrets.ConnectionString);
     KnockKnockContext context = new KnockKnockContext(optionsBuilder.Options);
     //builder.Services.AddSingleton(new ArrivalsRepositoryDb(context));
-    builder.Services.AddSingleton(new StudentsRepositoryDb(context));
+    builder.Services.AddSingleton<IStudentsRepository>(new StudentsRepositoryDb(context));
 }
 else
 {
