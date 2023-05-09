@@ -28,7 +28,7 @@ builder.Services.AddSwaggerGen();
 
 
 
-bool useSql = true;
+bool useSql = false;
 if (useSql)
 {
     var optionsBuilder = new DbContextOptionsBuilder<KnockKnockContext>();
