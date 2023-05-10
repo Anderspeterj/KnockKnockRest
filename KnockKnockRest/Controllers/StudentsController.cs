@@ -76,7 +76,7 @@ namespace KnockKnockRest.Controllers
                                        ex is ArgumentOutOfRangeException ||
                                        ex is ArgumentException)
             {
-                return BadRequest(ex.InnerException);
+                return BadRequest(ex.Message);
             }
         }
 

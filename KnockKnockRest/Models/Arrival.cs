@@ -8,6 +8,8 @@ namespace KnockKnockRest.Models
         public DateTime? ArrivalTime { get; set; }
         public int QrCode { get; set; }
 
+        //public string Test { get; set; }
+
 
         public void ValidateArrivalTime()
         {

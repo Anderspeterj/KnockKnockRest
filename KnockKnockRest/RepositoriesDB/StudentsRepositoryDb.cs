@@ -17,6 +17,7 @@ namespace KnockKnockRest.RepositoriesDB
 
         public Student Add(Student newStudent)
         {
+            newStudent.Validate();
             _context.students.Add(newStudent);
             _context.SaveChanges();
             return newStudent;

@@ -16,7 +16,7 @@ namespace KnockKnockRest.Tests.RepositoriesDB
         private ArrivalsRepositoryDb _repository;
         
 
-        Arrival arrival = new Arrival { QrCode = 44523245, ArrivalTime = DateTime.Now };
+        Arrival arrival = new Arrival { QrCode = 44523245, ArrivalTime = DateTime.Now};
         Arrival arrival2 = new Arrival { QrCode = 25755633, ArrivalTime = DateTime.Now };
         Arrival arrival3 = new Arrival { QrCode = 44523245, ArrivalTime = DateTime.Now };
         Arrival arrival4 = new Arrival { QrCode = 24658724, ArrivalTime = DateTime.Now };
@@ -33,10 +33,7 @@ namespace KnockKnockRest.Tests.RepositoriesDB
             _context = new KnockKnockContext(options);
 
             // Create an instance of ArrivalsRepositoryDb using the KnockKnockContext instance
-            _repository = new ArrivalsRepositoryDb(_context);
-
-
-            
+            _repository = new ArrivalsRepositoryDb(_context);  
         }
         [TestMethod]
         public void Add_NewArrival_ReturnsSameArrival()
