@@ -15,6 +15,7 @@ namespace KnockKnockRest.RepositoriesDB
 
         public Arrival Add(Arrival newArrival)
         {
+            newArrival.Validate();
             _context.arrivals.Add(newArrival);
             _context.SaveChanges();
             return newArrival;
@@ -30,7 +31,12 @@ namespace KnockKnockRest.RepositoriesDB
             return _context.arrivals.ToList();
         }
 
-        public Arrival? GetByID(int qr)
+        public Arrival? GetByID(int id)
+        {
+            List<Arrival> result = _context.arrivals.ToList();
+            return result.Find(arrival => arrival.Id == id);
+        }
+        public Arrival? GetByQr(int qr)
         {
             List<Arrival> result = _context.arrivals.ToList();
             return result.Find(arrival => arrival.QrCode == qr);
