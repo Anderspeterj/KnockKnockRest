@@ -43,7 +43,7 @@ namespace KnockKnockRest.Models.Tests
         {
             studentClean.ValidateQrCode();
             studentFail.QrCode = 987654321;
-            Assert.ThrowsException<ArgumentException>(() => studentFail.ValidateQrCode());
+            Assert.ThrowsException<ArgumentException>(() => studentFail.ValidateQrCode());  
 
 
         }
@@ -53,7 +53,8 @@ namespace KnockKnockRest.Models.Tests
         {
             studentClean.ValidateAddress();
             studentFail.Address = null;
-            Assert.ThrowsException<ArgumentException>(() => studentFail.ValidateAddress());
+            Assert.ThrowsException<ArgumentNullException>(() => studentFail.ValidateAddress());
+
         }
     }
 }

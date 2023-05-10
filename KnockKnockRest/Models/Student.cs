@@ -7,11 +7,7 @@
         public string? Name { get; set; }
         public string? Address { get; set; }
 
-        static bool IsEightDigits(int num)
-        {
-            int length = (int)Math.Floor(Math.Log10(num) + 1);
-            return length == 8;
-        }
+      
 
         public void ValidateName()
         {
@@ -31,10 +27,15 @@
 
         public void ValidateQrCode()
         {
+            if (QrCode == 0)
+            {
+                throw new ArgumentNullException("QrCode cannot be null");
+            }
             if (QrCode > 99999999 || QrCode < 10000000)
             {
                 throw new ArgumentException("QrCode must have exactly 8 digits");
             }
+            
         }
 
         public void ValidateAddress()
