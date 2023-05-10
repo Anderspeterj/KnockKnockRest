@@ -7,6 +7,7 @@ namespace KnockKnockRest.Models
         public int Id { get; set; }
         public DateTime? ArrivalTime { get; set; }
         public int QrCode { get; set; }
+        public string Name { get; set; }
 
         //public string Test { get; set; }
 
@@ -51,7 +52,7 @@ namespace KnockKnockRest.Models
         }
         public override string ToString()
         {
-            return $"Id: {Id}, ArrivalTime: {ArrivalTime}, QrCode: {QrCode}";
+            return $"Id: {Id}, ArrivalTime: {ArrivalTime}, QrCode: {QrCode}, Name: {Name}";
         }
 
     }

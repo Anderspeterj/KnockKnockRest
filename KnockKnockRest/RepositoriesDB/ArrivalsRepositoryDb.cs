@@ -8,13 +8,20 @@ namespace KnockKnockRest.RepositoriesDB
     {
 
         private KnockKnockContext _context;
+      
         public ArrivalsRepositoryDb(KnockKnockContext context)
         {
             _context = context;
         }
-
+        
         public Arrival Add(Arrival newArrival)
         {
+            foreach (var item in _context.students)
+            {
+                if (item.QrCode == newArrival.QrCode)
+                    newArrival.Name = item.Name;
+            }
+            
             newArrival.Validate();
             _context.arrivals.Add(newArrival);
             _context.SaveChanges();
