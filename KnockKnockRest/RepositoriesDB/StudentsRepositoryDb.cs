@@ -17,6 +17,7 @@ namespace KnockKnockRest.RepositoriesDB
 
         public Student Add(Student newStudent)
         {
+            newStudent.Validate();
             _context.students.Add(newStudent);
             _context.SaveChanges();
             return newStudent;
@@ -32,7 +33,12 @@ namespace KnockKnockRest.RepositoriesDB
             return _context.students.ToList();
         }
 
-        public Student? GetByID(int qr)
+        public Student? GetByID(int id)
+        {
+            List<Student> result = _context.students.ToList();
+            return result.Find(student => student.Id == id);
+        }
+        public Student? GetByQr(int qr)
         {
             List<Student> result = _context.students.ToList();
             return result.Find(student => student.QrCode == qr);

@@ -7,6 +7,7 @@
         public string? Name { get; set; }
         public string? Address { get; set; }
 
+
       
 
         public void ValidateName()
@@ -52,8 +53,16 @@
             {
                 throw new ArgumentException("Address cant be over 100 characters");
             }
-
-
+        }
+        public void Validate()
+        {
+            ValidateAddress();
+            ValidateName();
+            ValidateQrCode();
+        }
+        public override string ToString()
+        {
+            return $"Id: {Id}, Name: {Name}, QrCode: {QrCode}, Address: {Address}";
         }
     }
 

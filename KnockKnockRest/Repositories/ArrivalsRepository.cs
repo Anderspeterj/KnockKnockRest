@@ -14,7 +14,7 @@ namespace KnockKnockRest.Repositories
             _nextID = 1;
             _arrivals = new List<Arrival>()
             {
-
+                new Arrival { QrCode = 12345678, ArrivalTime = DateTime.Now },
             };
         }
 
