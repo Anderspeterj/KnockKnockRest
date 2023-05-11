@@ -15,10 +15,10 @@ namespace KnockKnockRest.Tests.RepositoriesDB
         private KnockKnockContext _context;
         private StudentsRepositoryDb _repository;
 
-        Student student = new Student { QrCode = 12345678, Name = "John Doe", Address = "123 Main St." };
-        Student student2 = new Student { QrCode = 87654321, Name = "Jane Smith", Address = "456 Elm St." };
-        Student student3 = new Student { QrCode = 12345678, Name = "Bob Johnson", Address = "789 Oak St." };
-        Student student4 = new Student { QrCode = 11111111, Name = "Alice Brown", Address = "999 Maple St." };
+        Student student = new Student { QrCode = 12345678, Name = "John Doe", Address = "123 Main St.", Email = "JohnD@hotmail.com", Password = "lol234"};
+        Student student2 = new Student { QrCode = 87654321, Name = "Jane Smith", Address = "456 Elm St.", Email = "JaneSmith@mail.dk", Password = "39506" };
+        Student student3 = new Student { QrCode = 12345678, Name = "Bob Johnson", Address = "789 Oak St.", Email = "bobby@bob.com", Password = "9849"};
+        Student student4 = new Student { QrCode = 11111111, Name = "Alice Brown", Address = "999 Maple St.", Email ="alice@mail.com", Password = "123"};
 
         [TestInitialize]
         public void TestInitialize()

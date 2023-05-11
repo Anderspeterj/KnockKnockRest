@@ -16,10 +16,10 @@ namespace KnockKnockRest.Tests.RepositoriesDB
         private ArrivalsRepositoryDb _repository;
         private StudentsRepositoryDb _studentRepo;
 
-        Student student = new Student { Name = "Jakob Test", Address = "Testvej 9", QrCode = 87878787 };
-        Student student2 = new Student { Name = "Christian Test", Address = "Testvej 46", QrCode = 23546745 };
-        Student student3 = new Student { Name = "Birk Test", Address = "Testvej 34", QrCode = 67567900 };
-        Student student4 = new Student { Name = "Jonathan Test", Address = "Testvej 22", QrCode = 23746532 };
+        Student student = new Student { Name = "Jakob Test", Address = "Testvej 9", QrCode = 87878787, Email = "JakobTheMan@gmail.com", Password = "fido12"};
+        Student student2 = new Student { Name = "Christian Test", Address = "Testvej 46", QrCode = 23546745, Email = "Chrisser@hotmail.com", Password = "93056mor" };
+        Student student3 = new Student { Name = "Birk Test", Address = "Testvej 34", QrCode = 67567900, Email = "birk.mail@mail.com", Password = "okjegsej123" };
+        Student student4 = new Student { Name = "Jonathan Test", Address = "Testvej 22", QrCode = 23746532, Email = "JonathanSpang@gmail.com", Password = "grisen123" };
         Arrival arrival = new Arrival { QrCode = 87878787, ArrivalTime = DateTime.Now };
         Arrival arrival2 = new Arrival { QrCode = 23546745, ArrivalTime = DateTime.Now };
         Arrival arrival3 = new Arrival { QrCode = 67567900, ArrivalTime = DateTime.Now };
@@ -93,7 +93,7 @@ namespace KnockKnockRest.Tests.RepositoriesDB
         [TestMethod]
         public void ArrivalGetRightName()
         {
-            Student studentTest = new Student { Address = "Testvej2", Name = "Mike Test", QrCode = 66746421 };
+            Student studentTest = new Student { Address = "Testvej2", Name = "Mike Test", QrCode = 66746421, Email = "test@gmail.com", Password ="2948" };
             Arrival arrivalTest = new Arrival { QrCode = 66746421, ArrivalTime = DateTime.Now };
             _studentRepo.Add(studentTest);
             _repository.Add(arrivalTest);
