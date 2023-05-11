@@ -37,15 +37,28 @@ namespace KnockKnockRest.Controllers
             }
         }
 
-        // GET api/<ArrivalsController>/5
+        // GETBYQR api/<ArrivalsController>/6
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [HttpGet("{id}")]
-        public ActionResult<Arrival> Get(int qr)
+        [HttpGet("qr={qr}")]
+        public ActionResult<List<Arrival>> GetByQr(int qr)
         {
-            if (_repository.GetByID(qr) == null)
-                return NotFound("No arrival with that qr exists");
-            return _repository.GetByID(qr);
+            var arrivals = _repository.GetAll().Where(a => a.QrCode == qr).ToList();
+            if (arrivals.Count == 0)
+            {
+                return NotFound("No arrivals with that QR code exist");
+            }
+            return arrivals;
+        }
+        // GETBYID api/<ArrivalsController>/5
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [HttpGet("id={id}")]
+        public ActionResult<Arrival> GetById(int id)
+        {
+            if (_repository.GetByID(id) == null)
+                return NotFound("No arrival with that id exists");
+            return _repository.GetByID(id);
         }
 
         // POST api/<ArrivalsController>
@@ -61,9 +74,10 @@ namespace KnockKnockRest.Controllers
             }
             catch (Exception ex) when (ex is ArgumentNullException ||
                                        ex is ArgumentOutOfRangeException ||
-                                       ex is ArgumentException)
+                                       ex is ArgumentException ||
+                                       ex is InvalidOperationException)
             {
-                return BadRequest(ex.InnerException);
+                return BadRequest(ex.Message);
             }
         }
 
