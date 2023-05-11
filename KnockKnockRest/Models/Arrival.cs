@@ -9,7 +9,7 @@ namespace KnockKnockRest.Models
         public int QrCode { get; set; }
         public string Name { get; set; }
 
-        //public string Test { get; set; }
+        public string Test { get; set; }
 
 
         public void ValidateArrivalTime()

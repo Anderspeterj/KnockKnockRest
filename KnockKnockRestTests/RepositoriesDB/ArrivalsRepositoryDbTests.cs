@@ -58,6 +58,7 @@ namespace KnockKnockRest.Tests.RepositoriesDB
             _repository.Add(arrival3);
             _repository.Add(arrival4);
             _context.SaveChanges();
+            
         }
 
 
