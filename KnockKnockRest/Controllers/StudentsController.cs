@@ -117,5 +117,22 @@ namespace KnockKnockRest.Controllers
             }
             return Ok(deletedStudent);
         }
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [HttpGet("email={email}&password={password}")]
+        public ActionResult<Student> GetByEmailAndPassword(string email, string password)
+        {
+            Student student = _repository.GetByEmailAndPassword(email, password);
+            if (student != null)
+            {
+                return Ok(student);
+            }
+            else
+            {
+                return NotFound("Student not found");
+            }
+        }
+
+
     }
 }

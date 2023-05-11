@@ -9,5 +9,6 @@ namespace KnockKnockRest.Interfaces
         List<Student> GetAll();
         Student? GetByID(int id);
         Student? Update(int id, Student updates);
+        public Student GetByEmailAndPassword(string email, string password);
     }
 }

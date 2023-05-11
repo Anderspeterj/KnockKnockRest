@@ -59,6 +59,16 @@ namespace KnockKnockRest.Repositories
             foundStudent.QrCode = updates.QrCode;
             return foundStudent;
         }
+
+        public Student? GetByEmail(string email)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Student GetByEmailAndPassword(string email, string password)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 

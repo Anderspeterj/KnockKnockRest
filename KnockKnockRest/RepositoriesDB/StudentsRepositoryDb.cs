@@ -48,5 +48,9 @@ namespace KnockKnockRest.RepositoriesDB
         {
             throw new NotImplementedException();
         }
+        public Student GetByEmailAndPassword(string email, string password)
+        {
+            return _context.students.FirstOrDefault(student => student.Email == email && student.Password == password);
+        }
     }
 }
