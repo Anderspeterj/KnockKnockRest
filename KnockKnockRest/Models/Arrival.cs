@@ -19,10 +19,10 @@ namespace KnockKnockRest.Models
                 throw new InvalidOperationException("Arrival time must be provided");
             }
 
-            if (ArrivalTime.Value > DateTime.Now)
-            {
-                throw new InvalidOperationException("Arrival time cannot be in the future");
-            }
+            //if (ArrivalTime.Value > DateTime.Now)
+            //{
+            //    throw new InvalidOperationException("Arrival time cannot be in the future");
+            //}
 
             var arrivalTimeThreshold = DateTime.Now.AddHours(-24);
             if (ArrivalTime.Value < arrivalTimeThreshold)
