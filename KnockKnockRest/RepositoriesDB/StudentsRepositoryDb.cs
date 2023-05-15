@@ -25,7 +25,14 @@ namespace KnockKnockRest.RepositoriesDB
 
         public Student? Delete(int id)
         {
-            throw new NotImplementedException();
+            Student? studentToBeDeleted = GetByID(id);
+            if (studentToBeDeleted == null)
+            {
+                return null;
+            }
+            _context.students.Remove(studentToBeDeleted);
+            _context.SaveChanges();
+            return studentToBeDeleted;
         }
 
         public List<Student> GetAll()

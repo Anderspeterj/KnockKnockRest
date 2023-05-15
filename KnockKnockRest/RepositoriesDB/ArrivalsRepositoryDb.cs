@@ -30,7 +30,14 @@ namespace KnockKnockRest.RepositoriesDB
 
         public Arrival? Delete(int id)
         {
-            throw new NotImplementedException();
+            Arrival? arrivalToBeDeleted = GetByID(id);
+            if (arrivalToBeDeleted == null)
+            {
+                return null;
+            }
+            _context.arrivals.Remove(arrivalToBeDeleted);
+            _context.SaveChanges();
+            return arrivalToBeDeleted;
         }
 
         public List<Arrival> GetAll()
