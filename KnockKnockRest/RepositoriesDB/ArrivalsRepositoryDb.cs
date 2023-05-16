@@ -26,7 +26,41 @@ namespace KnockKnockRest.RepositoriesDB
             _context.arrivals.Add(newArrival);
             _context.SaveChanges();
             return newArrival;
+
+            // Calculate absence percentage based on arrival time and subject
+            //switch (newArrival.Subject)
+            //{
+            //    case "danish":
+            //        newArrival.AbsencePercentage = CalculateAbsencePercentage(newArrival.ArrivalTime, TimeSpan.FromHours(8));
+            //        break;
+            //    case "math":
+            //        newArrival.AbsencePercentage = CalculateAbsencePercentage(newArrival.ArrivalTime, TimeSpan.FromHours(9));
+            //        break;
+            //    case "science":
+            //        newArrival.AbsencePercentage = CalculateAbsencePercentage(newArrival.ArrivalTime, TimeSpan.FromHours(10));
+            //        break;
+            //    case "spanish":
+            //        newArrival.AbsencePercentage = CalculateAbsencePercentage(newArrival.ArrivalTime, TimeSpan.FromHours(12));
+            //        break;
+            //    default:
+            //        newArrival.AbsencePercentage = 0;
+            //        break;
+            //}
+
+            return newArrival;
         }
+
+        private double CalculateAbsencePercentage(DateTime arrivalTime, TimeSpan classStartTime)
+        {
+            if (arrivalTime.TimeOfDay > classStartTime)
+                return 1.0; // 100% absence if arrived after class start time
+            else if (arrivalTime.TimeOfDay == classStartTime)
+                return 0.0; // 0% absence if arrived exactly at class start time
+            else
+                return 0.25; // 25% absence for other cases (arrived before class start time)
+        }
+
+    
 
         public Arrival? Delete(int id)
         {

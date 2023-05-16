@@ -9,9 +9,7 @@
         public string Email { get; set; }
         public string Password { get; set; }
         public string QrImgUrl { get; set; } = "empty";
-
-
-
+        public double Absence { get; set; }  
 
         public void ValidateName()
         {
@@ -66,7 +64,9 @@
         public override string ToString()
         {
             return $"Id: {Id}, Name: {Name}, QrCode: {QrCode}, Address: {Address}";
+     
         }
+
     }
 
 

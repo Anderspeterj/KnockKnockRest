@@ -9,5 +9,6 @@ namespace KnockKnockRest.Interfaces
         List<Arrival> GetAll();
         Arrival? GetByID(int id);
         Arrival? Update(int id, Arrival updates);
+
     }
 }
