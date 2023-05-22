@@ -68,6 +68,13 @@ namespace KnockKnockRest.Controllers
         [HttpPost]
         public ActionResult<Student> Post([FromBody] Student newStudent)
         {
+            foreach (var i in _repository.GetAll())
+            {
+                if(newStudent.QrCode == i.QrCode)
+                {
+                    return BadRequest("QrCode eksisterer allerede");
+                }
+            }
             try
             {
                 Student createdStudent = _repository.Add(newStudent);
@@ -112,6 +119,19 @@ namespace KnockKnockRest.Controllers
         public ActionResult<Student> Delete(int id)
         {
             Student? deletedStudent = _repository.Delete(id);
+            if (deletedStudent == null)
+            {
+                return NotFound();
+            }
+            return Ok(deletedStudent);
+        }
+        // DELETE api/<StudentsController>/5
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [HttpDelete("qr={qr}")]
+        public ActionResult<Student> DeleteByQR(int qr)
+        {
+            Student? deletedStudent = _repository.DeleteByQr(qr);
             if (deletedStudent == null)
             {
                 return NotFound();

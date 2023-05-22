@@ -68,5 +68,10 @@ namespace KnockKnockRest.Repositories
         {
             throw new NotImplementedException();
         }
+
+        public Student? DeleteByQr(int qr)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
