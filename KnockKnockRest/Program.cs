@@ -37,6 +37,7 @@ if (useSql)
     //builder.Services.AddSingleton(new ArrivalsRepositoryDb(context));
     builder.Services.AddSingleton<IStudentsRepository>(new StudentsRepositoryDb(context));
     builder.Services.AddSingleton<IArrivalsRepository>(new ArrivalsRepositoryDb(context));
+    builder.Services.AddSingleton<IDepaturesRepository>(new DepaturesRepositoryDb(context));
 }
 else
 {

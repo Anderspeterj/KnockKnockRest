@@ -10,9 +10,6 @@
         public string Password { get; set; }
         public string QrImgUrl { get; set; } = "empty";
 
-
-
-
         public void ValidateName()
         {
             if (Name == null)
@@ -39,7 +36,6 @@
             {
                 throw new ArgumentException("QrCode must have exactly 8 digits");
             }
-            
         }
 
         public void ValidateAddress()
@@ -67,8 +63,5 @@
         {
             return $"Id: {Id}, Name: {Name}, QrCode: {QrCode}, Address: {Address}";
         }
-    }
-
-
-    
+    }   
 }

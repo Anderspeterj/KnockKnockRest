@@ -5,7 +5,6 @@ using KnockKnockRest.Context;
 namespace KnockKnockRest.RepositoriesDB
     
 {
-
     public class StudentsRepositoryDb : IStudentsRepository
     {
         private KnockKnockContext _context;
@@ -45,6 +44,7 @@ namespace KnockKnockRest.RepositoriesDB
             List<Student> result = _context.students.ToList();
             return result.Find(student => student.Id == id);
         }
+
         public Student? GetByQr(int qr)
         {
             List<Student> result = _context.students.ToList();
@@ -55,6 +55,7 @@ namespace KnockKnockRest.RepositoriesDB
         {
             throw new NotImplementedException();
         }
+
         public Student GetByEmailAndPassword(string email, string password)
         {
             return _context.students.FirstOrDefault(student => student.Email == email && student.Password == password);

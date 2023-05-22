@@ -51,6 +51,7 @@ namespace KnockKnockRest.Controllers
             }
             return students;
         }
+
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpGet("id={id}")]
@@ -117,6 +118,7 @@ namespace KnockKnockRest.Controllers
             }
             return Ok(deletedStudent);
         }
+
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpGet("email={email}&password={password}")]
@@ -132,7 +134,5 @@ namespace KnockKnockRest.Controllers
                 return NotFound("Student not found");
             }
         }
-
-
     }
 }

@@ -9,17 +9,38 @@
 
         public void ValidateDepartureTime()
         {
-            throw new NotImplementedException();
+            if (!DepartureTime.HasValue)
+            {
+                throw new ArgumentNullException("Departure time must be provided");
+            }
+
+            var departureTimeThreshold = DateTime.Now.AddHours(-25);
+            if (DepartureTime.Value < departureTimeThreshold)
+            {
+                throw new ArgumentException("Departure time is too far in the past");
+            }
         }
 
         public void ValidateQrCode()
         {
-            throw new NotImplementedException();
+           if(QrCode == null)
+            {
+                throw new ArgumentNullException("QR Code can't be null!");
+            }
+
+            if (QrCode > 99999999 || QrCode < 10000000)
+            {
+                throw new ArgumentOutOfRangeException("QrCode must have exactly 8 digits");
+            }
+
         }
 
         public void ValidateName()
         {
-            throw new NotImplementedException();
+            if (Name == null)
+            {
+                throw new ArgumentNullException("Name can't be null");
+            }
         }
 
         public void Validate()

@@ -6,7 +6,7 @@
     PRIMARY KEY CLUSTERED ([Id] ASC)
 );
 
-CREATE TABLE[dbo].[Departure] (
+CREATE TABLE[dbo].[Departures] (
     [Id]          INT IDENTITY(1, 1) NOT NULL,
     [DepartureTime] DATETIME    NOT NULL,
     [QrCode]      INT           NOT NULL,

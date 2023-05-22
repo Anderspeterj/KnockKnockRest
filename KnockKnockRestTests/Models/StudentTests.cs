@@ -23,8 +23,6 @@ namespace KnockKnockRest.Models.Tests
         };
         Student studentFail = new Student() { Id = 0, Name = "Anders", Address = "holbækvej 41, benløse", QrCode = 87654321 };
 
-
-
         [TestMethod()]
         public void ValidateNameTest()
         {
@@ -35,7 +33,6 @@ namespace KnockKnockRest.Models.Tests
             Assert.ThrowsException<ArgumentOutOfRangeException>(() => studentFail.ValidateName());
             studentFail.Name = "4";
             Assert.ThrowsException<ArgumentOutOfRangeException>(() => studentFail.ValidateName());
-
         }
 
         [TestMethod()]
@@ -44,8 +41,6 @@ namespace KnockKnockRest.Models.Tests
             studentClean.ValidateQrCode();
             studentFail.QrCode = 987654321;
             Assert.ThrowsException<ArgumentException>(() => studentFail.ValidateQrCode());  
-
-
         }
 
         [TestMethod()]
@@ -54,7 +49,6 @@ namespace KnockKnockRest.Models.Tests
             studentClean.ValidateAddress();
             studentFail.Address = null;
             Assert.ThrowsException<ArgumentNullException>(() => studentFail.ValidateAddress());
-
         }
     }
 }

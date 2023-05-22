@@ -1,6 +1,6 @@
 ﻿namespace KnockKnockRest.Repositories
 {
-    public class DepartureRepository
+    public class DeparturesRepository
     {
     }
 }

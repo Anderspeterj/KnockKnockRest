@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using KnockKnockRest.Interfaces;
 
 namespace KnockKnockRest.Repositories
-
 {
     public class StudentsRepository : IStudentsRepository
     {
@@ -71,4 +70,3 @@ namespace KnockKnockRest.Repositories
         }
     }
 }
-

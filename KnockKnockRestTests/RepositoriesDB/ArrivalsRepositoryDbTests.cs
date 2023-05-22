@@ -37,7 +37,6 @@ namespace KnockKnockRest.Tests.RepositoriesDB
         [TestInitialize]
         public void TestInitialize()
         {
-
             // Create an instance of DbContextOptions<KnockKnockContext> using the UseInMemoryDatabase method
             var options = new DbContextOptionsBuilder<KnockKnockContext>()
                 .UseInMemoryDatabase(databaseName: "test_database")
@@ -57,10 +56,8 @@ namespace KnockKnockRest.Tests.RepositoriesDB
             _repository.Add(arrival2);
             _repository.Add(arrival3);
             _repository.Add(arrival4);
-            _context.SaveChanges();
-            
+            _context.SaveChanges();   
         }
-
 
         [TestMethod]
         public void Add_NewArrival_ReturnsSameArrival()
@@ -72,24 +69,26 @@ namespace KnockKnockRest.Tests.RepositoriesDB
             Assert.IsNotNull(result);
             Assert.AreEqual(arrival5, result);
             Assert.AreEqual(arrival5, _context.arrivals.Find(5));
-            
         }
+
         [TestMethod]
         public void GetById_GetsTheRightId()
         {
             Assert.AreEqual(_repository.GetByID(2), arrival2);
         }
+
         [TestMethod]
         public void GetByQr_GetsTheRightQr()
         {
             Assert.AreEqual(_repository.GetByQr(67567900), arrival3);
-
         }
+
         [TestMethod]
         public void GetAll_GetsAll()
         {       
             Assert.AreEqual(4, _repository.GetAll().Count);
         }
+
         [TestMethod]
         public void ArrivalGetRightName()
         {
@@ -106,7 +105,5 @@ namespace KnockKnockRest.Tests.RepositoriesDB
             ContentOfDB();
             _context.Database.EnsureDeleted();
         }
-
-
     }
 }

@@ -50,6 +50,7 @@ namespace KnockKnockRest.Controllers
             }
             return arrivals;
         }
+
         // GETBYID api/<ArrivalsController>/5
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
