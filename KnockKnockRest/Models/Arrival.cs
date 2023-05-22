@@ -6,14 +6,11 @@ namespace KnockKnockRest.Models
     {
         public int Id { get; set; }
         public DateTime? ArrivalTime { get; set; }
-        public int QrCode { get; set; }
-        public string Name { get; set; }
-
-
+        public int? QrCode { get; set; }
+        public string? Name { get; set; }
 
         public void ValidateArrivalTime()
         {
-            
             if (!ArrivalTime.HasValue)
             {
                 throw new InvalidOperationException("Arrival time must be provided");
@@ -31,30 +28,28 @@ namespace KnockKnockRest.Models
             }
         }
 
-
         public void ValidateQrCode()
         {
-            if (QrCode == 0)
+            if (QrCode == null)
             {
-                throw new ArgumentNullException("QrCode cannot be null");
+                throw new ArgumentException("QrCode can't be null");
             }
+
             if (QrCode > 99999999 || QrCode < 10000000)
             {
                 throw new ArgumentException("QrCode must have exactly 8 digits");
             }
-
         }
+
         public void Validate()
         {
             ValidateArrivalTime();
             ValidateQrCode();
         }
+
         public override string ToString()
         {
             return $"Id: {Id}, ArrivalTime: {ArrivalTime}, QrCode: {QrCode}, Name: {Name}";
         }
-
     }
-
-
 }
