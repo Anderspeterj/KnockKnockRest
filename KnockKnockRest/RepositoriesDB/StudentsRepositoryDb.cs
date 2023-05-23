@@ -60,5 +60,17 @@ namespace KnockKnockRest.RepositoriesDB
         {
             return _context.students.FirstOrDefault(student => student.Email == email && student.Password == password);
         }
+
+        public Student? DeleteByQr(int qr)
+        {
+            Student? studentToBeDeleted = GetByQr(qr);
+            if (studentToBeDeleted == null)
+            {
+                return null;
+            }
+            _context.students.Remove(studentToBeDeleted);
+            _context.SaveChanges();
+            return studentToBeDeleted;
+        }
     }
 }

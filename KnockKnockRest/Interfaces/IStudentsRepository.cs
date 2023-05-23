@@ -6,6 +6,7 @@ namespace KnockKnockRest.Interfaces
     {
         Student Add(Student newStudent);
         Student? Delete(int id);
+        Student? DeleteByQr(int qr);
         List<Student> GetAll();
         Student? GetByID(int id);
         Student? Update(int id, Student updates);
