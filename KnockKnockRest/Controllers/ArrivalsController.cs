@@ -93,7 +93,7 @@ namespace KnockKnockRest.Controllers
                         Id = 0,
                         QrCode = newArrival.QrCode,
                         Name = newArrival.Name,
-                        DepartureTime = DateTime.Now // Or whatever your time logic is
+                        DepartureTime = DateTime.Now
                     };
 
                     _departuresRepository.Add(departure);
