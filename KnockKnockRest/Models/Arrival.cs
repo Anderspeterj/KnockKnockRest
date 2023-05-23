@@ -5,13 +5,13 @@ namespace KnockKnockRest.Models
     public class Arrival
     {
         public int Id { get; set; }
-        public DateTime? ArrivalTime { get; set; }
+        public DateTime ArrivalTime { get; set; }
         public int? QrCode { get; set; }
         public string? Name { get; set; }
 
         public void ValidateArrivalTime()
         {
-            if (!ArrivalTime.HasValue)
+            if (ArrivalTime == null )
             {
                 throw new InvalidOperationException("Arrival time must be provided");
             }
@@ -22,7 +22,7 @@ namespace KnockKnockRest.Models
             //}
 
             var arrivalTimeThreshold = DateTime.Now.AddHours(-24);
-            if (ArrivalTime.Value < arrivalTimeThreshold)
+            if (ArrivalTime < arrivalTimeThreshold)
             {
                 throw new InvalidOperationException("Arrival time is too far in the past");
             }

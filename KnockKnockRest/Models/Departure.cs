@@ -3,23 +3,23 @@
     public class Departure
     {
         public int Id { get; set; }
-        public DateTime? DepartureTime { get; set; }
+        public DateTime DepartureTime { get; set; }
         public int? QrCode { get; set; }
         public string? Name { get; set; }
 
-        public void ValidateDepartureTime()
-        {
-            if (!DepartureTime.HasValue)
-            {
-                throw new ArgumentNullException("Departure time must be provided");
-            }
+        //public void ValidateDepartureTime()
+        //{
+        //    if (!DepartureTime.HasValue)
+        //    {
+        //        throw new ArgumentNullException("Departure time must be provided");
+        //    }
 
-            var departureTimeThreshold = DateTime.Now.AddHours(-25);
-            if (DepartureTime.Value < departureTimeThreshold)
-            {
-                throw new ArgumentException("Departure time is too far in the past");
-            }
-        }
+        //    var departureTimeThreshold = DateTime.Now.AddHours(-25);
+        //    if (DepartureTime.Value < departureTimeThreshold)
+        //    {
+        //        throw new ArgumentException("Departure time is too far in the past");
+        //    }
+        //}
 
         public void ValidateQrCode()
         {
@@ -45,7 +45,7 @@
 
         public void Validate()
         {
-            ValidateDepartureTime();
+            //ValidateDepartureTime();
             ValidateQrCode();
             ValidateName();
         }
