@@ -86,7 +86,7 @@ namespace KnockKnockRest.Controllers
                     d.DepartureTime.Date == currentDate);
 
                 // If there are more or equal arrivals than departures, add a departure
-                if (arrivalCount >= departureCount)
+                if (arrivalCount > departureCount)
                 {
                     var departure = new Departure
                     {

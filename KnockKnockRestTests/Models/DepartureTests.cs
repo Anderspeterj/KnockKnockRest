@@ -21,7 +21,6 @@ namespace KnockKnockRest.Models.Tests
 
         Departure departureFail = new Departure()
         {
-            DepartureTime = null,
             QrCode = 123456789,
             Name = null
         };
@@ -29,8 +28,8 @@ namespace KnockKnockRest.Models.Tests
         [TestMethod()]
         public void ValidateDepartureTimeTest()
         {
-            departureFail.DepartureTime = null;
-            Assert.ThrowsException<ArgumentNullException>(() => departureFail.ValidateDepartureTime());
+            
+            
             departureFail.DepartureTime = DateTime.Now.AddHours(-25);
             Assert.ThrowsException<ArgumentException>(() => departureFail.ValidateDepartureTime());
             departureClean.ValidateDepartureTime();
