@@ -19,15 +19,15 @@ namespace KnockKnockRest.Models.Tests
 
         Arrival arrivalFail = new Arrival()
         {
-            ArrivalTime = null,
+            
             QrCode = 123456789
         };
 
         [TestMethod()]
         public void ValidateArrivalTimeTest()
         {
-            arrivalFail.ArrivalTime = null;
-            Assert.ThrowsException<InvalidOperationException>(() => arrivalFail.ValidateArrivalTime());
+            
+            
             //arrivalFail.ArrivalTime = DateTime.Now.AddHours(1);
             //Assert.ThrowsException<InvalidOperationException>(() => arrivalFail.ValidateArrivalTime());
             arrivalFail.ArrivalTime = DateTime.Now.AddHours(-25);

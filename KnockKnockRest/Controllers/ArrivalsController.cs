@@ -3,6 +3,7 @@ using KnockKnockRest.Models;
 using KnockKnockRest.Repositories;
 using KnockKnockRest.Interfaces;
 using Microsoft.AspNetCore.Cors;
+ 
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -14,10 +15,12 @@ namespace KnockKnockRest.Controllers
     public class ArrivalsController : ControllerBase
     {
         private IArrivalsRepository _repository;
+        private IDepaturesRepository _departuresRepository;
 
-        public ArrivalsController(IArrivalsRepository repository)
+        public ArrivalsController(IArrivalsRepository repository, IDepaturesRepository departureRepo)
         {
             _repository = repository;
+            _departuresRepository = departureRepo;
         }
 
         // GET: api/<ArrivalsController>
@@ -66,10 +69,38 @@ namespace KnockKnockRest.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpPost]
-        public ActionResult<Arrival> Post([FromBody] Arrival newArrival)
+        public ActionResult Post([FromBody] Arrival newArrival)
         {
             try
             {
+                // Get the current date without the time
+                var currentDate = DateTime.Now.Date;
+
+                // Check the counts of Arrivals and Departures with the same QR code exists today
+                var arrivalCount = _repository.GetAll().Count(a =>
+                    a.QrCode == newArrival.QrCode &&
+                    a.ArrivalTime.Date == currentDate);
+
+                var departureCount = _departuresRepository.GetAll().Count(d =>
+                    d.QrCode == newArrival.QrCode &&
+                    d.DepartureTime.Date == currentDate);
+
+                // If there are more or equal arrivals than departures, add a departure
+                if (arrivalCount >= departureCount)
+                {
+                    var departure = new Departure
+                    {
+                        Id = 0,
+                        QrCode = newArrival.QrCode,
+                        Name = newArrival.Name,
+                        DepartureTime = DateTime.Now
+                    };
+
+                    _departuresRepository.Add(departure);
+                    return Created("api/Departures/" + departure.Id, departure);
+                }
+
+                // If there are less arrivals than departures, add an arrival
                 Arrival createdArrival = _repository.Add(newArrival);
                 return Created("api/Arrivals/" + createdArrival.Id, createdArrival);
             }
@@ -81,6 +112,8 @@ namespace KnockKnockRest.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+
 
         // PUT api/<ArrivalsController>/5
         [ProducesResponseType(StatusCodes.Status200OK)]
