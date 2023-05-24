@@ -111,6 +111,7 @@ namespace KnockKnockRest.RepositoriesDB.Tests
             _repository.Add(departureTest);
             Assert.AreEqual(studentTest.Name, departureTest.Name);
         }
+        
 
         [TestCleanup]
         public void TestCleanup()

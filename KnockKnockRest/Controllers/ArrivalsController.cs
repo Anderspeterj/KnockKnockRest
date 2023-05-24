@@ -85,7 +85,7 @@ namespace KnockKnockRest.Controllers
                     d.QrCode == newArrival.QrCode &&
                     d.DepartureTime.Date == currentDate);
 
-                // If there are more or equal arrivals than departures, add a departure
+                // If there are more arrivals than departures, add a departure
                 if (arrivalCount > departureCount)
                 {
                     var departure = new Departure

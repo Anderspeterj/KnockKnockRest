@@ -9,11 +9,6 @@
 
         public void ValidateDepartureTime()
         {
-            //if (!DepartureTime.HasValue)
-            //{
-            //    throw new ArgumentNullException("Departure time must be provided");
-            //}
-
             var departureTimeThreshold = DateTime.Now.AddHours(-25);
             if (DepartureTime < departureTimeThreshold)
             {

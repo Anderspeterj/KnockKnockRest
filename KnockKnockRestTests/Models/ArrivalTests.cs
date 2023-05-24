@@ -26,9 +26,6 @@ namespace KnockKnockRest.Models.Tests
         [TestMethod()]
         public void ValidateArrivalTimeTest()
         {
-            
-            //arrivalFail.ArrivalTime = DateTime.Now.AddHours(1);
-            //Assert.ThrowsException<InvalidOperationException>(() => arrivalFail.ValidateArrivalTime());
             arrivalFail.ArrivalTime = DateTime.Now.AddHours(-25);
             Assert.ThrowsException<InvalidOperationException>(() => arrivalFail.ValidateArrivalTime());
             arrivalClean.ValidateArrivalTime();

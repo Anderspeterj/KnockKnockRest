@@ -18,9 +18,11 @@ namespace KnockKnockRest.RepositoriesDB
             foreach (var item in _context.students)
             {
                 if (item.QrCode == newArrival.QrCode)
+
                     newArrival.Name = item.Name;
             }
 
+            newArrival.ArrivalTime = DateTime.Now;
             newArrival.Validate();
             _context.arrivals.Add(newArrival);
             _context.SaveChanges();

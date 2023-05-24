@@ -22,6 +22,7 @@ namespace KnockKnockRest.RepositoriesDB
                     newDeparture.Name = item.Name;
             }
 
+
             newDeparture.Validate();
             _context.departures.Add(newDeparture);
             _context.SaveChanges();
